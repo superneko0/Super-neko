@@ -1,0 +1,487 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d1c">
+<meta name="description" content="SUPER NEKO SN — Join the community and register your Solana wallet for the upcoming token launch.">
+<title>SUPER NEKO | SN Rewards</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --blue: #2588ff;
+  --red: #ff354d;
+  --bg: #080d1c;
+  --card: #10182a;
+  --text: #f5f7ff;
+  --muted: #929db5;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at 15% 10%, #153d7860, transparent 38%),
+    radial-gradient(ellipse at 90% 45%, #7d162b38, transparent 36%),
+    var(--bg);
+}
+
+a { color: inherit; text-decoration: none; }
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1120px;
+  padding: 24px;
+  margin: auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.logo {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--blue), #152e68 52%, var(--red));
+  box-shadow: 0 0 30px #267fff35;
+  font-size: 19px;
+  font-weight: 900;
+}
+
+.nav-status {
+  color: #a9b5ce;
+  font-size: 12px;
+  border: 1px solid #26334c;
+  padding: 9px 12px;
+  border-radius: 30px;
+}
+
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 50px 22px 80px;
+}
+
+.hero { text-align: center; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #2a4b78;
+  border-radius: 30px;
+  padding: 9px 15px;
+  color: #91c3ff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  background: #ff465b;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #ff354d;
+}
+
+h1 {
+  font-size: clamp(42px, 8vw, 82px);
+  line-height: 1;
+  letter-spacing: -4px;
+  margin: 27px 0 18px;
+  font-weight: 900;
+}
+
+h1 span {
+  background: linear-gradient(90deg, #55a8ff, #f5f7ff 50%, #ff5268);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  max-width: 590px;
+  margin: auto;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.hero-logo {
+  margin: 36px auto 12px;
+  width: 106px;
+  height: 106px;
+  border-radius: 30px;
+  display: grid;
+  place-items: center;
+  font-size: 38px;
+  font-weight: 900;
+  background: linear-gradient(140deg, #1679ed, #132449 55%, #e62c4b);
+  border: 1px solid #ffffff24;
+  box-shadow: 0 0 70px #247cff20, inset 0 0 25px #ffffff0c;
+  transform: rotate(-4deg);
+}
+
+.symbol-caption {
+  color: #aeb9d1;
+  font-size: 11px;
+  letter-spacing: 4px;
+  font-weight: 800;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  max-width: 900px;
+  margin: 55px auto 0;
+}
+
+.panel {
+  background: linear-gradient(145deg, #121d33ee, #0d1425f5);
+  border: 1px solid #27344c;
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 20px 80px #00000025;
+}
+
+.step {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #7fbaff;
+}
+
+h2 {
+  font-size: 22px;
+  letter-spacing: -0.7px;
+  margin: 14px 0 10px;
+}
+
+.description {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 51px;
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  transition: transform .2s, filter .2s;
+}
+
+.button:hover { filter: brightness(1.12); transform: translateY(-2px); }
+
+.x-button {
+  background: linear-gradient(100deg, #1878f5, #355df4);
+  color: white;
+  box-shadow: 0 8px 25px #247cff25;
+}
+
+.red-button {
+  color: white;
+  background: linear-gradient(100deg, #ed304d, #b91e42);
+  box-shadow: 0 8px 25px #ff354d20;
+}
+
+.button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.checkline {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 19px;
+  color: #c0cadc;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.checkline input {
+  accent-color: var(--blue);
+  margin-top: 4px;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+label.wallet-label {
+  display: block;
+  margin: 18px 0 10px;
+  color: #dce4f5;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.wallet-input {
+  width: 100%;
+  min-width: 0;
+  background: #080e1c;
+  border: 1px solid #2b3850;
+  border-radius: 12px;
+  padding: 15px 13px;
+  outline: none;
+  color: white;
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.wallet-input:focus { border-color: var(--blue); }
+
+.wallet-input::placeholder { color: #59657c; }
+
+.hint {
+  color: #7f8ba4;
+  font-size: 11px;
+  line-height: 1.7;
+  margin: 10px 0 20px;
+}
+
+.notice {
+  display: flex;
+  gap: 11px;
+  margin-top: 22px;
+  padding: 15px;
+  background: #14294a66;
+  border: 1px solid #284d78;
+  border-radius: 13px;
+  color: #b8d7ff;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.notice-icon { font-size: 17px; }
+
+#result {
+  display: none;
+  margin-top: 22px;
+  padding: 22px;
+  border: 1px solid #286d58;
+  background: #0e2b29;
+  border-radius: 16px;
+  text-align: center;
+}
+
+#result h3 { color: #8ff2c4; margin: 0 0 10px; }
+#result p { color: #c3ddd6; font-size: 12px; line-height: 1.8; }
+
+footer {
+  border-top: 1px solid #ffffff10;
+  text-align: center;
+  padding: 30px 20px;
+  color: #75819a;
+  font-size: 11px;
+  line-height: 2;
+}
+
+footer a { color: #90bfff; }
+
+@media (max-width: 700px) {
+  main { padding-top: 35px; }
+  .layout { grid-template-columns: 1fr; margin-top: 38px; }
+  .panel { padding: 24px; }
+  h1 { letter-spacing: -2px; }
+  .nav-status { font-size: 10px; }
+}
+</style>
+</head>
+
+<body>
+<nav>
+  <a class="brand" href="#" aria-label="Super Neko home">
+    <div class="logo">SN</div>
+    <span>SUPER NEKO</span>
+  </a>
+  <span class="nav-status">SOLANA COMMUNITY</span>
+</nav>
+
+<main>
+  <section class="hero">
+    <div class="eyebrow"><span class="dot"></span> COMMUNITY REWARDS</div>
+
+    <h1>SMALL CAT.<br><span>BIG DREAMS.</span></h1>
+
+    <p class="subtitle">
+      Be part of the SUPER NEKO movement.
+      Follow our journey, register your Solana wallet
+      and join the community before launch.
+    </p>
+
+    <div class="hero-logo">SN</div>
+    <div class="symbol-caption">SUPER NEKO · SOLANA</div>
+  </section>
+
+  <section class="layout">
+    <article class="panel">
+      <div class="step">STEP 01 — JOIN US</div>
+      <h2>Follow SUPER NEKO</h2>
+      <p class="description">
+        Join us on X to stay updated on the token launch,
+        community announcements and potential rewards.
+      </p>
+
+      <a class="button x-button"
+         href="https://x.com/Superneco"
+         target="_blank"
+         rel="noopener noreferrer">
+        Follow @Superneco on X ↗
+      </a>
+
+      <label class="checkline">
+        <input type="checkbox" id="followed">
+        <span>I have followed @Superneco on X.</span>
+      </label>
+
+      <div class="notice">
+        <span class="notice-icon">ⓘ</span>
+        <span>
+          Please follow the official account before registering.
+          This page cannot independently verify your X follow.
+        </span>
+      </div>
+    </article>
+
+    <article class="panel">
+      <div class="step">STEP 02 — REGISTER</div>
+      <h2>Register your wallet</h2>
+      <p class="description">
+        Enter your public Solana wallet address to register
+        your interest in potential SUPER NEKO rewards.
+      </p>
+
+      <form id="claimForm">
+        <label class="wallet-label" for="wallet">
+          SOLANA WALLET ADDRESS
+        </label>
+
+        <input
+          class="wallet-input"
+          id="wallet"
+          name="wallet"
+          type="text"
+          placeholder="Paste your Solana address"
+          minlength="32"
+          maxlength="44"
+          autocomplete="off"
+          spellcheck="false"
+          required
+        >
+
+        <p class="hint">
+          Enter your public wallet address only.
+          Never enter your recovery phrase or private key.
+        </p>
+
+        <label class="checkline">
+          <input type="checkbox" id="acknowledge" required>
+          <span>
+            I understand that the token has not launched yet
+            and that submitting this form does not guarantee
+            a reward or an allocation.
+          </span>
+        </label>
+
+        <button class="button red-button" id="submitBtn"
+                type="submit" style="margin-top:22px">
+          REGISTER WALLET →
+        </button>
+      </form>
+
+      <div id="result" role="status" aria-live="polite">
+        <h3>✓ Registration Demo Complete</h3>
+        <p>
+          Your wallet address passed the basic format check.
+          No tokens have been sent or claimed.
+          Your registration has not been saved to a server.
+          Official reward details will be announced after launch.
+        </p>
+      </div>
+    </article>
+  </section>
+</main>
+
+<footer>
+  <p><strong>SUPER NEKO · SN</strong></p>
+  <p>
+    Small Cat. Big Dreams. Built by the community.
+  </p>
+  <p>
+    <a href="https://x.com/Superneco"
+       target="_blank" rel="noopener noreferrer">
+       Follow @Superneco on X
+    </a>
+  </p>
+  <p>
+    This page is a wallet registration demo, not a live token claim.
+    No tokens are distributed by this page.
+  </p>
+</footer>
+
+<script>
+const form = document.getElementById("claimForm");
+const wallet = document.getElementById("wallet");
+const followed = document.getElementById("followed");
+const acknowledge = document.getElementById("acknowledge");
+const result = document.getElementById("result");
+
+function isSolanaAddress(value) {
+  // Basic Base58 format check, not an on-chain verification.
+  return /^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(value);
+}
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  if (!followed.checked) {
+    alert("Please follow @Superneco on X and confirm it first.");
+    return;
+  }
+
+  if (!isSolanaAddress(wallet.value.trim())) {
+    alert("Please enter a valid-looking Solana public address.");
+    wallet.focus();
+    return;
+  }
+
+  if (!acknowledge.checked) {
+    alert("Please confirm that rewards are not guaranteed.");
+    return;
+  }
+
+  result.style.display = "block";
+  result.scrollIntoView({ behavior: "smooth", block: "center" });
+});
+</script>
+</body>
+</html>
