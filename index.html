@@ -3,520 +3,314 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SUPER NEKO — Sky Adventure</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#10152e">
+<title>SUPER NEKO ($SN)</title>
 <style>
 *{box-sizing:border-box}
-body{
-  margin:0;background:#100a20;color:white;
-  font-family:Arial,Helvetica,sans-serif;
-  text-align:center;min-height:100vh;
-}
-header{padding:20px 12px 8px}
-h1{margin:0;color:#ffe06a;font-size:clamp(28px,7vw,46px);
-text-shadow:0 0 18px #ff5fcf}
-header p{color:#d9c9ff;margin:8px 0}
-.panel{max-width:900px;margin:auto;padding:10px}
-canvas{
-  display:block;width:100%;height:auto;
-  border:3px solid #ff5fcf;border-radius:15px;
-  background:#17264b;touch-action:manipulation;
-  box-shadow:0 0 25px #8a3cff55;
-}
-.stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:12px}
-.stat{background:#241633;padding:10px 18px;border-radius:12px;
-border:1px solid #6b4385;min-width:115px}
-.stat b{color:#ffe06a;font-size:22px;display:block;margin-top:4px}
-button,.upload-label{
-  background:linear-gradient(135deg,#ff5fcf,#ff9c55);
-  color:#180b24;border:0;border-radius:12px;
-  padding:13px 19px;font-weight:bold;font-size:16px;
-  cursor:pointer;display:inline-block;margin:5px;
-}
-button:hover,.upload-label:hover{filter:brightness(1.12)}
-#imageInput{display:none}
-#message{min-height:24px;color:#ffe06a;font-weight:bold}
-.help{font-size:13px;line-height:1.6;color:#cbbbdc}
-footer{padding:22px;color:#a99bb9;font-size:12px}
+body{margin:0;background:#0b1024;color:#fff;font-family:Arial,sans-serif}
+header{padding:18px;text-align:center;background:#151d3d;border-bottom:2px solid #57c7ff}
+header h1{margin:0;color:#57c7ff}
+nav{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px}
+a,button{border:0;border-radius:24px;padding:12px 18px;font-weight:bold;text-decoration:none;cursor:pointer}
+a,button{background:#57c7ff;color:#071022}
+a.secondary,button.secondary{background:#26345e;color:white}
+main{width:min(950px,94%);margin:auto}
+.hero{text-align:center;padding:32px 10px}
+.hero h2{font-size:clamp(32px,7vw,55px);margin:10px 0}
+.hero p{color:#c4cbea;line-height:1.6}
+.hero img{width:min(260px,75%);max-height:290px;object-fit:contain}
+section{margin:24px 0;padding:20px;background:#151d3d;border:1px solid #344574;border-radius:20px}
+h2{color:#57c7ff}
+.stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.stat{background:#0b1024;padding:12px 22px;border-radius:12px;min-width:110px}
+.stat span{display:block;font-size:12px;color:#bac5eb}
+.stat strong{font-size:25px}
+canvas{display:block;width:100%;height:auto;margin-top:16px;border-radius:12px;background:#101d42;touch-action:manipulation}
+.controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:15px}
+#message{text-align:center;color:#ffd166;line-height:1.5}
+footer{text-align:center;padding:25px;color:#aab6dd}
 </style>
 </head>
 <body>
 <header>
-  <h1>SUPER NEKO</h1>
-  <p>🐱 Fly through the cities. Beat your record. 🚀</p>
+  <h1>SUPER NEKO $SN</h1>
+  <nav>
+    <a class="secondary" href="#historia">Historia</a>
+    <a href="#juego">JUGAR</a>
+    <a class="secondary" href="https://x.com/Super_Neko0" target="_blank" rel="noopener">X / Twitter ↗</a>
+    <a class="secondary" href="https://t.me/SuperNeko0" target="_blank" rel="noopener">Telegram ↗</a>
+  </nav>
 </header>
 
-<div class="panel">
-  <div class="stats">
-    <div class="stat">SCORE<b id="score">0</b></div>
-    <div class="stat">BEST<b id="best">0</b></div>
-    <div class="stat">CITY<b id="city">NEW YORK</b></div>
+<main>
+  <div class="hero">
+    <p>🐱 EL HÉROE DE LA COMUNIDAD</p>
+    <h2>SMALL CAT.<br><span style="color:#ff526b">BIG ENERGY.</span></h2>
+    <img src="super-neko.png" alt="SUPER NEKO"
+         onerror="this.style.display='none'">
+    <p>Una aventura, una comunidad y un héroe preparado para volar.<br>
+    ¡Demuestra tus reflejos y supera tu propio récord!</p>
+    <a href="#juego">🚀 EMPEZAR A JUGAR</a>
   </div>
 
-  <canvas id="game" width="900" height="520"></canvas>
+  <section id="historia">
+    <h2>La historia de SUPER NEKO</h2>
+    <p>SUPER NEKO representa creatividad, diversión y espíritu comunitario.
+    Únete a la aventura, comparte tus mejores puntuaciones y ayuda a que
+    más personas conozcan al héroe.</p>
+  </section>
 
-  <div id="message">¡Selecciona tu imagen y pulsa JUGAR!</div>
+  <section id="juego">
+    <h2>🎮 SUPER NEKO: SKY DASH</h2>
+    <p>Toca la pantalla para volar. Esquiva los obstáculos. Si chocas,
+    termina la partida. ¡Cada obstáculo superado suma puntos!</p>
 
-  <div>
-    <label class="upload-label" for="imageInput">📷 Cargar imagen de Súper Neko</label>
-    <input id="imageInput" type="file" accept="image/*">
-    <br>
-    <button id="startBtn">🚀 JUGAR / REINICIAR</button>
-    <button id="jumpBtn">⬆️ VOLAR</button>
-  </div>
+    <div class="stats">
+      <div class="stat"><span>PUNTOS</span><strong id="score">0</strong></div>
+      <div class="stat"><span>RÉCORD</span><strong id="best">0</strong></div>
+    </div>
 
-  <p class="help">
-    CELULAR: toca la pantalla o el botón VOLAR para subir.<br>
-    PC: pulsa ESPACIO, ↑ o haz clic en el juego.<br>
-    Cada 30 puntos cambia la ciudad. ¡Evita los obstáculos!
-  </p>
-</div>
+    <canvas id="game" width="800" height="440"></canvas>
+    <div class="controls">
+      <button id="start">▶ JUGAR</button>
+      <button class="secondary" id="boost">⬆ VOLAR</button>
+      <button class="secondary" id="restart">↻ REINICIAR</button>
+    </div>
+    <p id="message">Pulsa JUGAR para comenzar.</p>
+    <p style="text-align:center;color:#bac5eb">
+      Móvil: toca la pantalla o VOLAR. Ordenador: usa espacio o flecha arriba.
+    </p>
+  </section>
 
-<footer>SUPER NEKO • Small Cat. Big Dreams. 🌙</footer>
+  <section>
+    <h2>🌐 Únete a la comunidad</h2>
+    <p>Sigue las novedades de SUPER NEKO en sus canales oficiales.</p>
+    <div class="controls">
+      <a href="https://x.com/Super_Neko0" target="_blank" rel="noopener">Seguir en X</a>
+      <a href="https://t.me/SuperNeko0" target="_blank" rel="noopener">Entrar a Telegram</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  SUPER NEKO ($SN) · Mini-juego para entretenimiento.<br>
+  La puntuación no representa tokens ni premios económicos.
+</footer>
 
 <script>
 (() => {
-"use strict";
+  const canvas = document.getElementById("game");
+  const ctx = canvas.getContext("2d");
+  const scoreEl = document.getElementById("score");
+  const bestEl = document.getElementById("best");
+  const message = document.getElementById("message");
+  const startBtn = document.getElementById("start");
+  const boostBtn = document.getElementById("boost");
+  const restartBtn = document.getElementById("restart");
 
-const canvas = document.getElementById("game");
-const ctx = canvas.getContext("2d");
-const scoreEl = document.getElementById("score");
-const bestEl = document.getElementById("best");
-const cityEl = document.getElementById("city");
-const messageEl = document.getElementById("message");
-const imageInput = document.getElementById("imageInput");
+  const W = canvas.width, H = canvas.height, ground = H - 25;
+  const neko = new Image();
+  neko.src = "super-neko.png";
 
-const W = canvas.width, H = canvas.height;
-const cities = ["NEW YORK", "TOKYO", "TEXAS"];
-let score = 0;
-let best = Number(localStorage.getItem("superNekoBest") || 0);
-let running = false;
-let gameOver = false;
-let frame = 0;
-let obstacles = [];
-let particles = [];
-let playerImage = null;
-let imageURL = null;
-let cityIndex = 0;
+  let mode = "ready", score = 0, best = 0;
+  let player, obstacles, lastTime, spawnTimer, animationId;
 
-bestEl.textContent = best;
+  try {
+    best = Number(localStorage.getItem("superNekoBest") || 0);
+  } catch(e) {}
+  bestEl.textContent = best;
 
-const player = {
-  x: 145, y: 235, vy: 0, size: 56
-};
+  function reset() {
+    score = 0;
+    player = {x:145, y:190, vy:0, size:58};
+    obstacles = [];
+    spawnTimer = 0;
+    scoreEl.textContent = "0";
+  }
 
-function cityForScore(s) {
-  return Math.floor(s / 30) % cities.length;
-}
+  function start() {
+    cancelAnimationFrame(animationId);
+    reset();
+    mode = "playing";
+    message.textContent = "¡A volar, SUPER NEKO!";
+    lastTime = performance.now();
+    animationId = requestAnimationFrame(loop);
+  }
 
-function updateCity() {
-  cityIndex = cityForScore(score);
-  cityEl.textContent = cities[cityIndex];
-}
-
-function loadImage(file) {
-  if (!file) return;
-  if (imageURL) URL.revokeObjectURL(imageURL);
-  imageURL = URL.createObjectURL(file);
-  const img = new Image();
-  img.onload = () => {
-    playerImage = img;
-    messageEl.textContent = "¡Imagen cargada! Pulsa JUGAR para comenzar.";
-    if (!running) draw();
-  };
-  img.onerror = () => {
-    messageEl.textContent = "No se pudo abrir la imagen. Prueba con otra.";
-  };
-  img.src = imageURL;
-}
-
-imageInput.addEventListener("change", e => {
-  loadImage(e.target.files[0]);
-});
-
-function resetGame() {
-  score = 0;
-  frame = 0;
-  obstacles = [];
-  particles = [];
-  player.y = 235;
-  player.vy = 0;
-  running = true;
-  gameOver = false;
-  scoreEl.textContent = score;
-  updateCity();
-  messageEl.textContent = "¡Vuela, Súper Neko!";
-  requestAnimationFrame(loop);
-}
-
-function flap() {
-  if (!running) {
-    if (gameOver) resetGame();
-    else {
-      resetGame();
-      player.vy = -7.8;
+  function fly() {
+    if (mode === "ready" || mode === "over") {
+      start();
     }
-    return;
-  }
-  player.vy = -7.8;
-  for (let i = 0; i < 5; i++) {
-    particles.push({
-      x: player.x - 15,
-      y: player.y + 10,
-      vx: -Math.random() * 3 - 1,
-      vy: Math.random() * 3 - 1.5,
-      life: 22
-    });
-  }
-}
-
-document.getElementById("startBtn").addEventListener("click", resetGame);
-document.getElementById("jumpBtn").addEventListener("click", flap);
-canvas.addEventListener("pointerdown", e => {
-  e.preventDefault();
-  flap();
-});
-
-document.addEventListener("keydown", e => {
-  if (["Space", "ArrowUp"].includes(e.code)) {
-    e.preventDefault();
-    if (!e.repeat) flap();
-  }
-});
-
-function drawSky() {
-  const palettes = [
-    ["#10183f", "#fa8d88"], // Nueva York
-    ["#160d40", "#ec5db6"], // Tokio
-    ["#174c73", "#ffbd66"]  // Texas
-  ];
-  const colors = palettes[cityIndex];
-  const grad = ctx.createLinearGradient(0, 0, 0, H);
-  grad.addColorStop(0, colors[0]);
-  grad.addColorStop(1, colors[1]);
-  ctx.fillStyle = grad;
-  ctx.fillRect(0, 0, W, H);
-
-  // Estrellas
-  for (let i = 0; i < 65; i++) {
-    let x = (i * 137 + 23) % W;
-    let y = (i * 71 + 17) % 260;
-    ctx.fillStyle = "rgba(255,255,255,.75)";
-    ctx.fillRect(x, y, 2, 2);
+    if (mode === "playing") player.vy = -350;
   }
 
-  if (cityIndex === 0) drawNewYork();
-  if (cityIndex === 1) drawTokyo();
-  if (cityIndex === 2) drawTexas();
-}
-
-function building(x, w, h, color, windows=true) {
-  const y = H - h;
-  ctx.fillStyle = color;
-  ctx.fillRect(x, y, w, h);
-  if (windows) {
-    ctx.fillStyle = "#ffe58a";
-    for (let wx = x + 8; wx < x + w - 5; wx += 15) {
-      for (let wy = y + 12; wy < H - 10; wy += 19) {
-        if (Math.sin(wx * wy) > -0.45) ctx.fillRect(wx, wy, 5, 8);
-      }
+  function finish() {
+    mode = "over";
+    if (score > best) {
+      best = score;
+      bestEl.textContent = best;
+      try {
+        localStorage.setItem("superNekoBest", String(best));
+      } catch(e) {}
     }
+    message.textContent = "💥 ¡Choque! Puntuación: " + score +
+      ". Récord: " + best + ". Pulsa JUGAR para intentarlo otra vez.";
   }
-}
 
-function drawNewYork() {
-  // Skyline de Nueva York y Empire State Building
-  building(0, 80, 160, "#18213f");
-  building(85, 95, 235, "#202849");
-  building(190, 80, 185, "#18203b");
-  building(278, 110, 290, "#202746");
-  building(400, 80, 210, "#18203d");
-  building(488, 100, 250, "#222747");
-  building(595, 85, 175, "#18213e");
-  building(690, 110, 245, "#202745");
-  building(810, 90, 190, "#18203d");
+  function obstacle() {
+    const gap = 155;
+    const top = 45 + Math.random() * (ground - gap - 90);
+    obstacles.push({x:W + 10, w:66, top, gap, passed:false});
+  }
 
-  // Punta del Empire State
-  ctx.fillStyle = "#303958";
-  ctx.fillRect(321, 180, 22, 110);
-  ctx.fillRect(327, 150, 10, 30);
-  ctx.beginPath();
-  ctx.moveTo(331, 120); ctx.lineTo(327, 150); ctx.lineTo(335, 150);
-  ctx.fill();
+  function background() {
+    const g = ctx.createLinearGradient(0,0,0,H);
+    g.addColorStop(0,"#1c3972");
+    g.addColorStop(1,"#0b1024");
+    ctx.fillStyle = g;
+    ctx.fillRect(0,0,W,H);
 
-  // Estatua de la Libertad simplificada
-  ctx.fillStyle = "#4ed8b0";
-  ctx.fillRect(744, 290, 15, 55);
-  ctx.fillRect(737, 311, 29, 34);
-  ctx.fillRect(740, 280, 23, 16);
-  ctx.fillRect(749, 260, 5, 20);
-  ctx.fillRect(754, 264, 16, 5);
-}
-
-function drawTokyo() {
-  // Skyline de Tokio, torre y letreros luminosos
-  building(0, 100, 160, "#21163e");
-  building(105, 90, 210, "#271945");
-  building(205, 110, 155, "#20163e");
-  building(320, 100, 240, "#27183e");
-  building(425, 110, 175, "#20173b");
-  building(540, 95, 220, "#281941");
-  building(640, 110, 170, "#20153c");
-  building(755, 145, 205, "#27183e");
-
-  // Tokyo Tower
-  ctx.fillStyle = "#ff6d62";
-  ctx.beginPath();
-  ctx.moveTo(490, 145); ctx.lineTo(453, 360); ctx.lineTo(527, 360);
-  ctx.closePath(); ctx.fill();
-  ctx.fillStyle = "#fff0cf";
-  ctx.fillRect(474, 215, 33, 7);
-  ctx.fillRect(468, 264, 44, 7);
-  ctx.fillRect(461, 315, 58, 7);
-
-  // Letreros de neón
-  ctx.fillStyle = "#ff5fcf";
-  ctx.fillRect(120, 320, 57, 18);
-  ctx.fillStyle = "#75f5e4";
-  ctx.fillRect(667, 330, 60, 18);
-  ctx.fillStyle = "#ffe06a";
-  ctx.fillRect(230, 300, 42, 15);
-}
-
-function drawTexas() {
-  // Desierto, cactus y edificios de ciudad texana
-  ctx.fillStyle = "#e4a15d";
-  ctx.fillRect(0, 395, W, 125);
-
-  building(0, 95, 125, "#75434a", false);
-  building(100, 115, 170, "#8e4d4b", false);
-  building(225, 95, 135, "#75434a", false);
-  building(330, 125, 190, "#874b49", false);
-  building(465, 95, 150, "#75434a", false);
-  building(570, 120, 210, "#874b49", false);
-  building(700, 100, 145, "#75434a", false);
-  building(805, 95, 170, "#874b49", false);
-
-  // Ventanas cálidas
-  ctx.fillStyle = "#ffd67a";
-  for (let x = 15; x < W; x += 45) {
-    for (let y = 390; y < 490; y += 28) {
-      ctx.fillRect(x, y, 10, 13);
+    ctx.fillStyle = "#ffffff";
+    for (let i=0;i<40;i++) {
+      const x = (i*127 + Math.floor(performance.now()/35)) % W;
+      const y = (i*61) % (ground-20);
+      ctx.globalAlpha = 0.25 + (i%3)*0.15;
+      ctx.fillRect(x,y,2,2);
     }
-  }
-
-  // Cactus del desierto
-  function cactus(x, y, s) {
-    ctx.strokeStyle = "#286b48";
-    ctx.lineWidth = 9 * s;
-    ctx.lineCap = "round";
-    ctx.beginPath();
-    ctx.moveTo(x, y); ctx.lineTo(x, y - 48*s);
-    ctx.moveTo(x, y - 25*s); ctx.lineTo(x - 13*s, y - 25*s);
-    ctx.lineTo(x - 13*s, y - 38*s);
-    ctx.moveTo(x, y - 34*s); ctx.lineTo(x + 13*s, y - 34*s);
-    ctx.lineTo(x + 13*s, y - 48*s);
-    ctx.stroke();
-  }
-  cactus(80, 445, 1.1);
-  cactus(790, 450, 1.3);
-
-  // Sol del desierto
-  ctx.fillStyle = "#ffdf78";
-  ctx.beginPath(); ctx.arc(730, 105, 39, 0, Math.PI*2); ctx.fill();
-}
-
-function drawObstacle(o) {
-  const gap = o.gap;
-  const capH = 20;
-  const color = ["#45e0b0", "#ff5fcf", "#ffe06a"][cityIndex];
-
-  // Obstáculo superior
-  ctx.fillStyle = color;
-  ctx.fillRect(o.x, 0, o.w, o.top);
-  ctx.fillRect(o.x - 6, o.top - capH, o.w + 12, capH);
-
-  // Obstáculo inferior
-  const bottomY = o.top + gap;
-  ctx.fillRect(o.x, bottomY, o.w, H - bottomY);
-  ctx.fillRect(o.x - 6, bottomY, o.w + 12, capH);
-
-  ctx.fillStyle = "rgba(255,255,255,.20)";
-  ctx.fillRect(o.x + 7, 0, 5, o.top);
-  ctx.fillRect(o.x + 7, bottomY + capH, 5, H - bottomY - capH);
-}
-
-function drawPlayer() {
-  const size = player.size;
-  ctx.save();
-  ctx.translate(player.x, player.y);
-  ctx.rotate(Math.max(-0.35, Math.min(0.5, player.vy * 0.04)));
-
-  // Capa roja
-  ctx.fillStyle = "#ff344f";
-  ctx.beginPath();
-  ctx.moveTo(-size*.25, -size*.05);
-  ctx.lineTo(-size*.95, size*.18);
-  ctx.lineTo(-size*.65, size*.55);
-  ctx.lineTo(-size*.15, size*.28);
-  ctx.fill();
-
-  if (playerImage) {
-    ctx.drawImage(playerImage, -size/2, -size/2, size, size);
-  } else {
-    // Personaje provisional hasta cargar tu imagen
-    ctx.fillStyle = "#f3a65c";
-    ctx.beginPath();
-    ctx.ellipse(0, 2, size*.40, size*.35, 0, 0, Math.PI*2);
-    ctx.fill();
-
-    // Orejas
-    ctx.fillStyle = "#f3a65c";
-    ctx.beginPath();
-    ctx.moveTo(-18,-13); ctx.lineTo(-17,-30); ctx.lineTo(-4,-19);
-    ctx.fill();
-    ctx.beginPath();
-    ctx.moveTo(8,-18); ctx.lineTo(20,-31); ctx.lineTo(19,-10);
-    ctx.fill();
-
-    // Máscara
-    ctx.fillStyle = "#2468ff";
-    ctx.fillRect(-19,-8,38,13);
-    ctx.fillStyle = "#fff";
-    ctx.fillRect(-13,-5,7,5);
-    ctx.fillRect(5,-5,7,5);
-    ctx.fillStyle = "#222";
-    ctx.fillRect(-10,-4,3,4);
-    ctx.fillRect(7,-4,3,4);
-
-    // Escudo SS
-    ctx.fillStyle = "#ffe06a";
-    ctx.beginPath();
-    ctx.moveTo(0, 10); ctx.lineTo(12, 14);
-    ctx.lineTo(10, 26); ctx.lineTo(0, 32);
-    ctx.lineTo(-10, 26); ctx.lineTo(-12,14);
-    ctx.closePath(); ctx.fill();
-    ctx.fillStyle = "#42205e";
-    ctx.font = "bold 11px Arial";
-    ctx.textAlign = "center";
-    ctx.fillText("SS",0,23);
-  }
-  ctx.restore();
-}
-
-function collision(o) {
-  const r = player.size * .34;
-  const left = player.x - r, right = player.x + r;
-  const top = player.y - r, bottom = player.y + r;
-  if (top < 0 || bottom > H) return true;
-
-  const horizontal = right > o.x && left < o.x + o.w;
-  if (horizontal && (top < o.top || bottom > o.top + o.gap)) return true;
-  return false;
-}
-
-function endGame() {
-  running = false;
-  gameOver = true;
-  if (score > best) {
-    best = score;
-    localStorage.setItem("superNekoBest", String(best));
-    bestEl.textContent = best;
-  }
-  messageEl.textContent = "💥 ¡Fin del juego! Puntuación: " + score +
-    ". Pulsa JUGAR para intentarlo otra vez.";
-  draw();
-}
-
-function drawParticles() {
-  for (const p of particles) {
-    ctx.fillStyle = "#ffe06a";
-    ctx.globalAlpha = Math.max(0, p.life / 22);
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, 3, 0, Math.PI*2);
-    ctx.fill();
     ctx.globalAlpha = 1;
-  }
-}
-
-function drawOverlay() {
-  if (running) return;
-  ctx.fillStyle = "rgba(10,5,24,.50)";
-  ctx.fillRect(0, 0, W, H);
-  ctx.textAlign = "center";
-  ctx.fillStyle = "#ffe06a";
-  ctx.font = "bold 43px Arial";
-  ctx.fillText(gameOver ? "GAME OVER" : "SUPER NEKO", W/2, H/2 - 22);
-  ctx.fillStyle = "#ffffff";
-  ctx.font = "bold 21px Arial";
-  ctx.fillText(gameOver ? "¡Inténtalo de nuevo!" : "Pulsa JUGAR para comenzar", W/2, H/2 + 20);
-  ctx.font = "16px Arial";
-  ctx.fillText("NEW YORK  →  TOKYO  →  TEXAS", W/2, H/2 + 55);
-}
-
-function draw() {
-  drawSky();
-  for (const o of obstacles) drawObstacle(o);
-  drawParticles();
-  drawPlayer();
-  drawOverlay();
-}
-
-function loop() {
-  if (!running) return;
-  frame++;
-
-  player.vy += 0.36;
-  player.y += player.vy;
-
-  if (frame % 92 === 0) {
-    const gap = 175;
-    const margin = 65;
-    const top = margin + Math.random() * (H - gap - margin*2);
-    obstacles.push({x: W + 10, w: 72, top, gap, scored:false});
+    ctx.fillStyle = "#29416d";
+    ctx.fillRect(0,ground,W,H-ground);
+    ctx.fillStyle = "#57c7ff";
+    ctx.fillRect(0,ground,W,4);
   }
 
-  const speed = 4.1 + Math.min(score * .035, 3.2);
+  function drawNeko() {
+    ctx.save();
+    ctx.translate(player.x, player.y);
+    ctx.rotate(Math.max(-0.3,Math.min(0.65,player.vy/650)));
 
-  for (const o of obstacles) {
-    o.x -= speed;
+    // Capa del héroe
+    ctx.fillStyle = "#ff405e";
+    ctx.beginPath();
+    ctx.moveTo(-12,-4);
+    ctx.lineTo(-43,10);
+    ctx.lineTo(-34,35);
+    ctx.lineTo(-8,22);
+    ctx.closePath();
+    ctx.fill();
 
-    if (!o.scored && o.x + o.w < player.x) {
-      o.scored = true;
-      score++;
-      scoreEl.textContent = score;
-      updateCity();
+    if (neko.complete && neko.naturalWidth > 0) {
+      ctx.drawImage(neko,-player.size/2,-player.size/2,
+        player.size,player.size);
+    } else {
+      // Personaje provisional si la imagen aún no está disponible
+      ctx.fillStyle = "#f5bd77";
+      ctx.beginPath();
+      ctx.arc(0,0,23,0,Math.PI*2);
+      ctx.fill();
+      ctx.fillStyle = "#20294a";
+      ctx.font = "bold 16px Arial";
+      ctx.textAlign = "center";
+      ctx.fillText("SN",0,6);
+      ctx.fillStyle = "#f5bd77";
+      ctx.beginPath();
+      ctx.moveTo(-17,-13);ctx.lineTo(-22,-32);ctx.lineTo(-4,-22);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(7,-22);ctx.lineTo(22,-32);ctx.lineTo(18,-10);
+      ctx.fill();
+    }
+    ctx.restore();
+  }
 
-      if (score % 30 === 0) {
-        messageEl.textContent = "🌆 ¡Llegaste a " + score +
-          " puntos! Próxima ciudad: " +
-          cities[cityForScore(score)] + "!";
-      } else {
-        messageEl.textContent = "¡Sigue volando, Súper Neko!";
-      }
+  function drawObstacle(o) {
+    const g = ctx.createLinearGradient(o.x,0,o.x+o.w,0);
+    g.addColorStop(0,"#d72c54");
+    g.addColorStop(0.5,"#ff7186");
+    g.addColorStop(1,"#d72c54");
+    ctx.fillStyle = g;
+    ctx.fillRect(o.x,0,o.w,o.top);
+    ctx.fillRect(o.x-5,o.top-14,o.w+10,14);
+    ctx.fillRect(o.x,o.top+o.gap,o.w,ground-(o.top+o.gap));
+    ctx.fillRect(o.x-5,o.top+o.gap,o.w+10,14);
+  }
+
+  function hits(o) {
+    const r = player.size*0.31;
+    const left = player.x-r, right = player.x+r;
+    const top = player.y-r, bottom = player.y+r;
+    return right>o.x && left<o.x+o.w &&
+      (top<o.top || bottom>o.top+o.gap);
+  }
+
+  function loop(now) {
+    if (mode !== "playing") return;
+    const dt = Math.min((now-lastTime)/1000,0.03);
+    lastTime = now;
+
+    player.vy += 800*dt;
+    player.y += player.vy*dt;
+    spawnTimer += dt;
+
+    if (spawnTimer > 1.5) {
+      spawnTimer = 0;
+      obstacle();
     }
 
-    if (collision(o)) {
-      endGame();
+    const speed = 230 + Math.min(score*2,100);
+    obstacles.forEach(o => {
+      o.x -= speed*dt;
+      if (!o.passed && o.x+o.w < player.x) {
+        o.passed = true;
+        score++;
+        scoreEl.textContent = score;
+      }
+    });
+    obstacles = obstacles.filter(o => o.x+o.w > 0);
+
+    background();
+    obstacles.forEach(drawObstacle);
+    drawNeko();
+
+    const r = player.size*0.31;
+    if (player.y-r < 0 || player.y+r > ground ||
+        obstacles.some(hits)) {
+      finish();
       return;
     }
+    animationId = requestAnimationFrame(loop);
   }
 
-  obstacles = obstacles.filter(o => o.x + o.w > -20);
-
-  for (const p of particles) {
-    p.x += p.vx;
-    p.y += p.vy;
-    p.life--;
+  function renderIdle() {
+    background();
+    player = {x:145,y:190,vy:0,size:58};
+    drawNeko();
   }
-  particles = particles.filter(p => p.life > 0);
 
-  draw();
-  requestAnimationFrame(loop);
-}
+  startBtn.addEventListener("click", () => {
+    if (mode !== "playing") {
+      start();
+      player.vy = -350;
+    }
+  });
+  boostBtn.addEventListener("click", fly);
+  restartBtn.addEventListener("click", start);
 
-// Pantalla inicial
-draw();
+  canvas.addEventListener("pointerdown", e => {
+    e.preventDefault();
+    fly();
+  });
+
+  document.addEventListener("keydown", e => {
+    if (["Space","ArrowUp","KeyW"].includes(e.code)) {
+      e.preventDefault();
+      if (!e.repeat) fly();
+    }
+  });
+
+  reset();
+  renderIdle();
 })();
 </script>
 </body>
